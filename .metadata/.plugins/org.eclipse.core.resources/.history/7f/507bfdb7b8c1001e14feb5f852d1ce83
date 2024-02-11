@@ -1,0 +1,23 @@
+server:
+  port: 8081
+  
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/DisplayApi
+    username: root
+    password: new_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    
+  jpa:
+    show-sql: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+  
+  #changing username and password of default login form based authentication
+  #security:
+    #user:
+      #name: amarjeet
+      #password: root
+      #role: admin
+      

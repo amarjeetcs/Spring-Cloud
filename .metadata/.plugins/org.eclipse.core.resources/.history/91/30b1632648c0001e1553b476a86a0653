@@ -1,0 +1,14 @@
+package com.spring.restapi;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@org.springframework.web.bind.annotation.RestController
+public class RestController {
+
+	@GetMapping("/getName/{name}")
+	public String getName(@PathVariable String name) {
+		return "your name is"+name;
+	}
+
+}

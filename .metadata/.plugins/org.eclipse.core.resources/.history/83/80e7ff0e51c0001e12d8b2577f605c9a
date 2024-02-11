@@ -1,0 +1,53 @@
+package com.spring.restapi;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
+
+import jakarta.websocket.server.PathParam;
+
+@org.springframework.web.bind.annotation.RestController
+public class RestController {
+	@Autowired
+	private RestTemplate template;
+
+	// PatVariable practical
+	@GetMapping("/getName/{name}")
+	public String getName(@PathVariable String name) {
+		return "your name is"+name;
+	}
+
+	//RequestParam practical
+	@GetMapping("/getAge")
+	public String getAge(@RequestParam int id, @RequestParam String name) {
+	    return "Your id is " + id + ", and your name is " + name;
+	}
+	
+
+	@GetMapping("/payNow/{price}")
+	public String payNow(@PathVariable int price)
+	{
+		return "Payment with INR "+ price  +" is successfull";
+		
+	}
+	
+	@GetMapping("/hello")
+	public String hello()
+	{
+		return "Hello World Amarjeet";
+	}
+	
+
+	
+	
+	@GetMapping("/amazon-payment")
+	public String invokePaymentService()
+	{
+		String url="http://PAYMENT-SERVICE/hello";
+		return "Welcome to Calling internal api using RestTemplate" + template.getForObject(url, String.class);
+	}
+
+
+}
